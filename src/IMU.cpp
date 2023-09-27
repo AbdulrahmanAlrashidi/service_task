@@ -18,7 +18,7 @@ print angle from client.
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "IMU");
-  if (argc != 3)
+  if (argc != 4)
   {
     ROS_INFO("usage: IMU X Y Z");
     return 1;
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
   service_task_pkg::MSG srv;
   srv.request.x = atoll(argv[1]);
   srv.request.y = atoll(argv[2]);
-  srv.request.z = atoll(argv[2]);
+  srv.request.z = atoll(argv[3]);
   if (client.call(srv))
   {
     ROS_INFO("Yaw_angle: %f", (float)srv.response.result);

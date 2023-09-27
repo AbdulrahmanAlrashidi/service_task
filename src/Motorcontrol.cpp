@@ -6,9 +6,7 @@ MSG : x , y , z : type float64
 service : MotorControl is a client for IMU_Server 
 MotorControl will request IMU_Server to compute Yaw Angle
 IMU_Server will respond with response.angle 
-
 print angle from client.
-
 */
 
 #include "ros/ros.h"
@@ -18,8 +16,8 @@ bool compute(service_task_pkg::MSG::Request  &req,
          service_task_pkg::MSG::Response &res)
 {
   res.result = req.z;
-  ROS_INFO("request: x=%d, y=%d, z=%d", (double)req.x, (double)req.y,(double)req.z );
-  ROS_INFO("sending back response: [%d]", (double)res.result);
+  ROS_INFO("request: x=%f, y=%f, z=%f", (float)req.x, (float)req.y,(float)req.z);
+  ROS_INFO("sending back response: [%f]", (float)res.result);
   return true;
 }
 
